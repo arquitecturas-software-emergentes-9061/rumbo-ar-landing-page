@@ -119,6 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
       team_role: "Ingeniería de Software",
 
 
+      contact_badge: "Atención institucional",
+      contact_desc: "Descubre cómo Rumbo-AR puede adaptarse a la distribución y necesidades de orientación de tu establecimiento.",
+      contact_b1: "Presentación personalizada para tu equipo técnico",
+      contact_b2: "Revisión general de las necesidades de tu sede",
+      contact_b3: "Orientación para integrar infraestructura BLE existente",
+      contact_b4: "Recomendaciones iniciales de configuración de pisos",
+      contact_b5: "Espacio para resolver preguntas técnicas y operativas",
+      contact_box_tag: "MAPEO LÓGICO",
+      contact_box_title: "Integración sin obras civiles",
+      contact_box_desc: "Configuración 100% sobre software y hardware previo.",
       contact_title: "Solicita una demo para tu clínica",
       form_label_name: "Nombre completo",
       form_label_email: "Correo institucional",
@@ -253,6 +263,16 @@ document.addEventListener('DOMContentLoaded', () => {
       team_role: "Software Engineering",
 
 
+      contact_badge: "Institutional Inquiries",
+      contact_desc: "Discover how Rumbo-AR adapts to your facility's architectural layout and patient wayfinding needs.",
+      contact_b1: "Tailored technical presentation for your operational team",
+      contact_b2: "Comprehensive review of your clinic's wayfinding bottlenecks",
+      contact_b3: "Consultation on leveraging existing BLE & Wi-Fi infrastructure",
+      contact_b4: "Preliminary floorplan and zone configuration recommendations",
+      contact_b5: "Dedicated Q&A session covering IT, privacy, and clinical workflow",
+      contact_box_tag: "LOGICAL MAPPING",
+      contact_box_title: "Zero construction works required",
+      contact_box_desc: "100% configured through cloud software and pre-existing hardware.",
       contact_title: "Request a guided demo for your clinic",
       form_label_name: "Full name",
       form_label_email: "Work email",
