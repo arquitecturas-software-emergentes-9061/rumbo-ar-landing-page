@@ -117,12 +117,15 @@ contactForm.addEventListener('submit', submitRequest);
 function markMediaUnavailable(image) {
   if (image.dataset.mediaFailed) return;
   image.dataset.mediaFailed = 'true';
-  image.hidden = true;
+  // An inline style, because the image classes set their own display and would override the hidden attribute.
+  image.style.display = 'none';
+  // Team photos sit in a small circle, so they get a short message that fits inside it.
+  const key = image.closest('.team-avatar') ? 'media_unavailable_photo' : 'media_unavailable';
   const message = document.createElement('p');
   message.className = 'media-unavailable';
   message.setAttribute('role', 'status');
-  message.dataset.i18n = 'media_unavailable';
-  message.textContent = window.rumboI18n ? window.rumboI18n.t('media_unavailable') : 'Imagen no disponible por ahora.';
+  message.dataset.i18n = key;
+  message.textContent = window.rumboI18n ? window.rumboI18n.t(key) : 'Imagen no disponible por ahora.';
   image.insertAdjacentElement('afterend', message);
 }
 

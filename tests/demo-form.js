@@ -101,8 +101,10 @@ async function checkForm() {
     const teamPhoto = document.querySelector('.team-photo');
     teamPhoto.src = 'assets/images/missing-photo.png';
     await settle();
-    requireCondition(teamPhoto.hidden && teamPhoto.nextElementSibling.classList.contains('media-unavailable'),
-      'broken image is reported in its section');
+    const brokenMessage = teamPhoto.nextElementSibling;
+    requireCondition(getComputedStyle(teamPhoto).display === 'none', 'broken image is really hidden');
+    requireCondition(brokenMessage && brokenMessage.classList.contains('media-unavailable')
+      && brokenMessage.getBoundingClientRect().height > 0, 'broken image message is visible in its section');
 
     // PR-14: no video yet, so the section says it is in preparation instead of showing an empty player.
     const video = document.getElementById('productVideo');
