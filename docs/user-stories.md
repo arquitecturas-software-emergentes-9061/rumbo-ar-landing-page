@@ -68,7 +68,7 @@ Como visitante, quiero leer las preguntas frecuentes, para resolver mis dudas si
 Como responsable de una clínica, quiero enviar una solicitud de demo, para que el equipo me contacte.
 
 - **Estado actual:** un único formulario permite elegir entre solicitar una demostración e iniciar la incorporación. Envía la solicitud a `rumbo-api` (`POST /api/v1/onboarding-requests`, PR-4), que la guarda con el consentimiento. Muestra la confirmación con el código de la solicitud, o un aviso si falla, sin perder los datos.
-- **Falta:** la URL pública de la API en `config.js` y publicar la política de privacidad.
+- **Falta:** que la API en Render acepte el origen de la landing (`CORS_ALLOWED_ORIGINS`) y publicar la política de privacidad.
 
 ### LP-08: Acceder al panel administrativo
 
