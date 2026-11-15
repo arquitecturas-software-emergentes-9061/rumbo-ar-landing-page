@@ -425,7 +425,7 @@
     <div class="container contact-container">
       <div class="contact-info">
         <span class="contact-tag" data-i18n="contact_badge">Atención institucional</span>
-        <h2 data-i18n="contact_title">Solicita una demo para tu clínica</h2>
+        <h2 data-i18n="contact_title">Solicita una demo o incorpora tu clínica</h2>
         <p data-i18n="contact_desc">Descubre cómo Rumbo-AR puede adaptarse a la distribución y necesidades de orientación de tu establecimiento.</p>
 
         <ul class="contact-benefits">
@@ -473,7 +473,20 @@
         </div>
       </div>
       <div class="contact-form-card">
-        <form class="contact-form">
+        <form class="contact-form" method="post">
+          <fieldset class="form-fieldset">
+            <legend data-i18n="form_type_legend">¿Qué deseas hacer?</legend>
+            <div class="form-options">
+              <label class="form-option" for="request-type-demo">
+                <input type="radio" id="request-type-demo" name="request_type" value="demo" checked required />
+                <span data-i18n="form_type_demo">Solicitar una demostración</span>
+              </label>
+              <label class="form-option" for="request-type-onboarding">
+                <input type="radio" id="request-type-onboarding" name="request_type" value="onboarding" />
+                <span data-i18n="form_type_onboarding">Iniciar la incorporación de mi clínica</span>
+              </label>
+            </div>
+          </fieldset>
           <div class="form-row">
             <div class="form-group">
               <label for="contact-name" data-i18n="form_label_name">Nombre completo</label>
@@ -518,9 +531,11 @@
           </label>
 
           <button type="submit" class="btn-submit">
-            <span data-i18n="form_btn">Solicitar demo</span>
+            <span data-i18n="form_btn" data-request-label="demo">Solicitar demo</span>
+            <span data-i18n="form_btn_onboarding" data-request-label="onboarding" hidden>Iniciar incorporación</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </button>
+          <p class="form-notice" id="formNotice" role="status" data-i18n="form_notice_unavailable" hidden>El envío de solicitudes aún no está disponible. Tus datos no se han enviado ni guardado.</p>
         </form>
       </div>
     </div>
@@ -628,6 +643,64 @@
       </div>
     </div>
   </section>
+  <section class="final-cta">
+    <div class="container final-cta-inner">
+      <h2 data-i18n="final_title">Haz que llegar al destino sea más simple</h2>
+      <p data-i18n="final_desc">Mejora la orientación de pacientes y visitantes dentro de tu clínica con Rumbo-AR.</p>
+      <div class="final-cta-buttons">
+        <a href="#contacto" class="btn-primary btn-lg" data-i18n="final_btn1">Solicitar demo →</a>
+        <a href="#como-funciona" class="btn-cta-secondary btn-lg" data-i18n="final_btn2">Conocer cómo funciona</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo">
+          <div class="logo-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16"/>
+            </svg>
+          </div>
+          <span>Rumbo-<strong>AR</strong></span>
+        </a>
+        <p data-i18n="footer_desc">Orientación indoor para una experiencia más simple dentro de clínicas.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer_h_product">PRODUCTO</h5>
+        <a href="#beneficios" data-i18n="nav_benefits">Beneficios</a>
+        <a href="#como-funciona" data-i18n="nav_how">Cómo funciona</a>
+        <a href="#planes" data-i18n="nav_plans">Planes</a>
+        <a href="#about-product" data-i18n="nav_product">El Producto</a>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer_h_company">EMPRESA</h5>
+        <a href="#equipo" data-i18n="nav_team">Equipo</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer_h_patients">PARA PACIENTES</h5>
+        <span class="footer-unavailable" data-i18n="footer_app_unavailable">Descarga de la app aún no disponible</span>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer_h_clinics">PARA CLÍNICAS</h5>
+        <a href="#request-type-onboarding" data-i18n="footer_onboarding">Incorporar mi clínica</a>
+        <a href="#contacto" class="footer-link-highlight" data-i18n="footer_demo">Solicitar demo</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span data-i18n="footer_copy">© 2026 Rumbo-AR Inc. Navegación indoor de precisión clínica. Todos los derechos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
   <script src="assets/scripts/i18n.js" defer></script>
   <script src="assets/scripts/script.js" defer></script>
 </body>
