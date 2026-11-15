@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       prod_badge: "EL PRODUCTO",
       prod_title: "Acerca del Sistema Rumbo-AR",
+      prod_demo_alt: "Vista de la ruta en realidad aumentada",
+      prod_demo_caption: "Vista ilustrativa: la ruta indica continuar recto 12 metros y muestra Cardiología a 18 metros.",
       prod_desc: "Rumbo-AR combina navegación guiada en interiores, planos de planta inteligentes y realidad aumentada para brindar una orientación autónoma y sin estrés en centros de salud.",
       prod_f1_title: "Posicionamiento BLE",
       prod_f1_desc: "Microbalizas Bluetooth de bajo consumo que determinan la ubicación milimétrica dentro de la clínica sin depender de señal GPS.",
@@ -200,6 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       prod_badge: "THE PRODUCT",
       prod_title: "About the Rumbo-AR System",
+      prod_demo_alt: "Augmented reality route preview",
+      prod_demo_caption: "Illustrative preview: the route prompts you to continue straight for 12 meters and shows Cardiology 18 meters away.",
       prod_desc: "Rumbo-AR combines guided indoor navigation, intelligent floor plans, and augmented reality to provide autonomous, stress-free wayfinding in healthcare centers.",
       prod_f1_title: "BLE Positioning",
       prod_f1_desc: "Low-energy Bluetooth micro-beacons determining sub-meter indoor clinic positioning without depending on GPS satellites.",
@@ -295,6 +299,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (translations[lang] && translations[lang][key] !== undefined) {
         el.setAttribute('placeholder', translations[lang][key]);
       }
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+      const value = translations[lang]?.[el.dataset.i18nAlt];
+      if (value !== undefined) el.alt = value;
     });
 
     // Update HTML lang attribute
