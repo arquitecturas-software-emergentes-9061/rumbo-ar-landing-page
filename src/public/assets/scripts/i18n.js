@@ -116,6 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       team_title: "Personas que hacen posible Rumbo-AR",
       team_desc: "Somos un equipo de estudiantes de Ingeniería de Software enfocado en diseñar una solución que combine arquitectura de software, experiencia de usuario y tecnologías de navegación indoor.",
+      team_photo_julio: "Retrato de Julio Castro Alejos",
+      team_photo_jahaziel: "Retrato de José Jahaziel Guerra Pérez",
+      team_photo_yaku: "Retrato de Yaku Mateo Guzman",
+      team_photo_antonio: "Retrato de Antonio Navarro Chinga",
+      team_photo_gabriela: "Retrato de Gabriela Nicole Shapiama Rivera",
       team_role: "Ingeniería de Software",
 
 
@@ -250,6 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       team_title: "The team behind Rumbo-AR",
       team_desc: "We are a passionate team of Software Engineering students combining software architecture, user experience, and indoor positioning technologies.",
+      team_photo_julio: "Portrait of Julio Castro Alejos",
+      team_photo_jahaziel: "Portrait of José Jahaziel Guerra Pérez",
+      team_photo_yaku: "Portrait of Yaku Mateo Guzman",
+      team_photo_antonio: "Portrait of Antonio Navarro Chinga",
+      team_photo_gabriela: "Portrait of Gabriela Nicole Shapiama Rivera",
       team_role: "Software Engineering",
 
 

@@ -793,20 +793,26 @@ h3 {
   border-color: var(--blue);
 }
 .team-avatar {
-  width: 72px; height: 72px;
+  width: 96px; height: 96px;
+  flex-shrink: 0;
+  overflow: hidden;
   border-radius: 50%;
   background: #F1F5F9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 16px;
   border: 2px solid var(--border);
 }
-.team-photo { object-fit: cover; }
-.team-avatar-placeholder {
-  background: var(--blue-light);
-  border-color: #DCE3FE;
+.team-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+/* Encuadre del rostro en cada foto; los archivos originales no se recortan */
+.team-photo-julio { transform: scale(1.7); transform-origin: 50% 1%; }
+.team-photo-jahaziel { object-position: 50% 30%; transform: scale(1.6); transform-origin: 61% 21%; }
+.team-photo-yaku { object-position: 50% 12%; }
+.team-photo-antonio { transform: scale(1.25); transform-origin: 26% 38%; }
+.team-photo-gabriela { object-position: 50% 0; transform: scale(1.2); transform-origin: 74% 0; }
 .team-card strong {
   display: block;
   font-size: .94rem;
