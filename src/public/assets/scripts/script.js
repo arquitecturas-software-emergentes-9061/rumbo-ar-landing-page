@@ -1,7 +1,36 @@
-document.querySelector(".contact-form").addEventListener("submit", (event) => {
-  // Keep form data local until the real submission endpoint is integrated.
-  event.preventDefault();
+const contactForm = document.querySelector('.contact-form');
+const formNotice = document.getElementById('formNotice');
+const requestModes = {
+  '#contacto': 'demo',
+  '#request-type-onboarding': 'onboarding'
+};
+
+function updateRequestLabel() {
+  const type = contactForm.elements.request_type.value;
+  contactForm.querySelectorAll('[data-request-label]').forEach(label => {
+    label.hidden = label.dataset.requestLabel !== type;
+  });
+  formNotice.hidden = true;
+}
+
+function selectRequest(fragment) {
+  const type = requestModes[fragment];
+  if (!type) return;
+  document.getElementById('request-type-' + type).checked = true;
+  updateRequestLabel();
+}
+
+document.querySelectorAll('a[href="#contacto"], a[href="#request-type-onboarding"]').forEach(link => {
+  link.addEventListener('click', () => selectRequest(link.hash));
 });
+window.addEventListener('hashchange', () => selectRequest(location.hash));
+contactForm.addEventListener('change', updateRequestLabel);
+contactForm.addEventListener('input', () => { formNotice.hidden = true; });
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  formNotice.hidden = false;
+});
+selectRequest(location.hash);
 
 const menuButton = document.getElementById('hamburger');
 const menuLinks = document.getElementById('navLinks');

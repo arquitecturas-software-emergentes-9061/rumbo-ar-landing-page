@@ -14,6 +14,18 @@ function checkForm() {
   try {
     const form = document.querySelector('.contact-form');
     const fields = form.elements;
+    const clinicLink = document.querySelector('footer a[data-i18n="footer_onboarding"]');
+    const notice = document.getElementById('formNotice');
+    const clickWithoutNavigation = (link) => {
+      // The fixture's base URL points at the assets, not at the fixture itself.
+      link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+      link.click();
+    };
+    clickWithoutNavigation(clinicLink);
+    requireCondition(fields.request_type.value === 'onboarding', 'footer starts clinic onboarding');
+    requireCondition(!form.querySelector('[data-request-label="onboarding"]').hidden, 'onboarding submit label shown');
+    clickWithoutNavigation(document.querySelector('.final-cta a[href="#contacto"]'));
+    requireCondition(fields.request_type.value === 'demo', 'demo link selects demo mode');
     let submissions = 0;
     let wasPrevented = false;
     form.addEventListener('submit', (event) => {
@@ -46,6 +58,7 @@ function checkForm() {
     fields.privacyConsent.checked = true;
     form.requestSubmit();
     requireCondition(submissions === 1 && wasPrevented, 'valid form reaches the local handler');
+    requireCondition(!notice.hidden, 'form explains that no request was sent');
     document.body.dataset.qaResult = 'PASS';
   } catch (error) {
     document.body.dataset.qaResult = error.message;
