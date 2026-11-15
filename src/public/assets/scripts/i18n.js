@@ -263,6 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
       form_btn: "Solicitar demo",
       form_btn_onboarding: "Iniciar incorporación",
       form_notice_unavailable: "El envío de solicitudes aún no está disponible. Tus datos no se han enviado ni guardado.",
+      form_notice_sending: "Enviando tu solicitud...",
+      form_notice_sent_demo: "¡Listo! Recibimos tu solicitud de demo. Te escribiremos a tu correo para coordinar la fecha.",
+      form_notice_sent_onboarding: "¡Listo! Recibimos tu solicitud de incorporación. Te escribiremos a tu correo con los siguientes pasos.",
+      form_notice_invalid: "Revisa los datos del formulario: alguno no es válido. No se guardó nada.",
+      form_notice_failed: "No pudimos enviar tu solicitud y no se guardó nada. Tus datos siguen en el formulario: inténtalo de nuevo en unos minutos.",
+      form_receipt_label: "Código de tu solicitud:",
 
       // Final CTA
       final_title: "Haz que llegar al destino sea más simple",
@@ -547,6 +553,12 @@ document.addEventListener('DOMContentLoaded', () => {
       form_btn: "Request demo",
       form_btn_onboarding: "Start onboarding",
       form_notice_unavailable: "Request submission is not available yet. Your data has not been sent or saved.",
+      form_notice_sending: "Sending your request...",
+      form_notice_sent_demo: "Done! We received your demo request. We will email you to schedule it.",
+      form_notice_sent_onboarding: "Done! We received your onboarding request. We will email you the next steps.",
+      form_notice_invalid: "Check the form: some data is not valid. Nothing was saved.",
+      form_notice_failed: "We could not send your request and nothing was saved. Your data is still in the form: please try again in a few minutes.",
+      form_receipt_label: "Your request code:",
 
       // Final CTA
       final_title: "Make reaching every clinic destination effortless",
@@ -576,6 +588,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let currentLang = 'es';
+  // Messages created by main.js (form notices, video state) are translated with the same dictionary
+  window.rumboI18n = { t: key => (translations[currentLang] || translations.es)[key] ?? key };
   const langSwitch = document.getElementById('langSwitch');
   const currentLangLabel = document.getElementById('currentLangLabel');
 
