@@ -221,6 +221,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── 7b. VIDEO DEL PRODUCTO (PR-14) ──────────────── */
+  // Sin productVideoUrl en config.js la sección queda "en preparación" (así viene en el HTML)
+  const productVideo = document.getElementById('productVideo');
+  if (productVideo && config.productVideoUrl) {
+    const playButton = productVideo.querySelector('.video-play-btn');
+    const overlay = productVideo.querySelector('.video-overlay-preview');
+    const slot = productVideo.querySelector('.video-embed-slot');
+    productVideo.dataset.state = 'available';
+    productVideo.querySelector('[data-video-pending]').hidden = true;
+    playButton.hidden = false;
+    playButton.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = config.productVideoUrl;
+      frame.title = t('prod_video_badge');
+      frame.allow = 'fullscreen; picture-in-picture';
+      frame.allowFullscreen = true;
+      slot.replaceChildren(frame);
+      slot.style.display = 'block';
+      overlay.style.display = 'none';
+      productVideo.dataset.state = 'playing';
+    });
+  }
+
   /* ── 8. IMÁGENES NO DISPONIBLES ──────────────────── */
   document.querySelectorAll('.phone-mockup-img, .team-photo').forEach(img => {
     const markUnavailable = () => img.parentElement.classList.add('image-unavailable');

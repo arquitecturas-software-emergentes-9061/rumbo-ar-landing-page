@@ -384,14 +384,19 @@
       </div>
 
       <!-- Video Container Box -->
-      <div class="video-showcase-box" data-animate>
+      <!-- PR-14: mientras no exista el video (config.js → productVideoUrl), la sección lo dice y ofrece una demo en vivo -->
+      <div class="video-showcase-box" id="productVideo" data-state="pending" data-animate>
         <div class="video-placeholder-wrapper">
           <div class="video-overlay-preview">
-            <div class="video-play-btn" title="Reproducir demostración" data-i18n-title="prod_video_play">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-            </div>
+            <button type="button" class="video-play-btn" title="Reproducir demostración" aria-label="Reproducir demostración" data-i18n-title="prod_video_play" data-i18n-aria-label="prod_video_play" hidden>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </button>
             <div class="video-info-badge">
               <span class="pulse-dot"></span> <span data-i18n="prod_video_badge">Demostración en video del producto · Rumbo-AR</span>
+            </div>
+            <div class="video-pending" data-video-pending>
+              <p data-i18n="prod_video_pending">El video del producto está en preparación. Mientras tanto, te lo mostramos en una demo en vivo.</p>
+              <a href="#contacto" class="video-pending-cta" data-i18n="prod_video_cta">Pedir una demo en vivo</a>
             </div>
           </div>
           <div class="video-embed-slot" style="display: none;">
