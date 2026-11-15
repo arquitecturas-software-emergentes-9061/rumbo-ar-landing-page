@@ -582,6 +582,8 @@ h3 {
   gap: 60px;
   align-items: flex-start;
 }
+@media (max-width: 768px) { .contact-container { grid-template-columns: 1fr; } }
+
 .contact-tag {
   display: inline-block;
   padding: 5px 14px;
