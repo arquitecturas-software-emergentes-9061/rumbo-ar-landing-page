@@ -2,7 +2,7 @@
 
 Sitio web estático que presenta Rumbo-AR, una solución de navegación indoor para clínicas. Explica el producto, muestra los planes y responde preguntas frecuentes, en español e inglés.
 
-La landing es independiente de `rumbo-api/` y `rumbo-web-application/`: no usa su código ni llama a sus servicios.
+La landing no usa código de `rumbo-api/` ni de `rumbo-web-application/`. Su única llamada es el envío del formulario a `POST /api/v1/onboarding-requests` de `rumbo-api` (PR-4).
 
 ## Estructura
 
@@ -18,6 +18,7 @@ prueba-landing/
             ├── images/          demo-screen.png (hoy sin uso), phone-hero.png
             │   └── team/        Fotos de los integrantes del equipo
             ├── scripts/
+            │   ├── config.js    URL de rumbo-api y del video del producto (se cambia al publicar)
             │   ├── i18n.js      Diccionario ES/EN y cambio de idioma
             │   └── main.js      Menú, animaciones e interacciones
             └── styles/
@@ -59,20 +60,20 @@ Después abre `http://localhost:5500`.
 
 ## Formulario de solicitud
 
-El formulario de `index.html` cubre la solicitud de demostración y la incorporación de una clínica. **Todavía no está conectado a ningún servicio:** no envía ni guarda datos, y al pulsar el botón con datos válidos muestra un aviso que lo indica.
+El formulario de `index.html` cubre la solicitud de demostración y la incorporación de una clínica. Con datos válidos, `main.js` envía la solicitud en JSON a `POST {apiBaseUrl}/api/v1/onboarding-requests`; `apiBaseUrl` está en `assets/scripts/config.js`. Mientras envía, el botón queda deshabilitado. Si la API responde 201, aparece la confirmación con el código de la solicitud y el formulario se limpia. Si falla, sin red o con un error, se muestra un aviso y los datos siguen en el formulario. La API debe tener el origen de la landing en `CORS_ALLOWED_ORIGINS`.
 
-Campos que recibirá el servicio externo:
+Campos del formulario y su campo en la API:
 
-| `name` | Contenido | Obligatorio |
-|---|---|---|
-| `request_type` | `demo` u `onboarding` | Sí |
-| `contact_name` | Nombre del representante | Sí |
-| `contact_email` | Correo institucional | Sí |
-| `contact_role` | Cargo | Sí |
-| `organization_name` | Nombre de la clínica | Sí |
-| `site_count` | `1`, `2-3` o `4+` | Sí |
-| `message` | Mensaje comercial | No |
-| `privacy_accepted` | `on` si se acepta la política de privacidad | Sí |
+| `name` | Contenido | Obligatorio | En la API |
+|---|---|---|---|
+| `request_type` | `demo` u `onboarding` | Sí | `type`: `DEMO` u `ONBOARDING` |
+| `contact_name` | Nombre del representante | Sí | `fullName` |
+| `contact_email` | Correo institucional | Sí | `email` |
+| `contact_role` | Cargo | Sí | `role` |
+| `organization_name` | Nombre de la clínica | Sí | `clinicName` |
+| `site_count` | `1`, `2-3` o `4+` | Sí | `sitesRange`: `ONE`, `TWO_TO_THREE` o `FOUR_OR_MORE` |
+| `message` | Mensaje comercial | No | `message` (`null` si está vacío) |
+| `privacy_accepted` | `on` si se acepta la política de privacidad | Sí | `privacyConsent` |
 
 Los valores de `request_type` y `site_count` no cambian con el idioma.
 
@@ -83,20 +84,19 @@ La página funciona como mejora progresiva. Si JavaScript está desactivado o `m
 - El contenido queda visible, sin animaciones.
 - La navegación se muestra abierta y funciona con enlaces normales.
 - Las respuestas de las preguntas frecuentes aparecen desplegadas.
-- El formulario muestra permanentemente el aviso de que el envío no está disponible.
+- El formulario muestra permanentemente el aviso de que el envío no está disponible, porque sin JavaScript no se puede enviar.
 
 Si `i18n.js` no carga, la página sigue en español y se oculta el botón de idioma. Si una imagen del teléfono o del equipo no carga, se muestra un estado alternativo.
 
 ## Publicación
 
-Publica el contenido de `src/public/`. Todavía no hay un servicio de hosting elegido ni configurado.
+Publica el contenido de `src/public/`. Todavía no hay un servicio de hosting elegido ni configurado. Antes de publicar, cambia en `assets/scripts/config.js` `apiBaseUrl` por la URL pública de `rumbo-api` y, cuando exista el video, `productVideoUrl`.
 
 ## Pendientes conocidos
 
-- El formulario de solicitud no envía datos: falta conectarlo a un servicio externo.
 - La casilla de privacidad remite a una política que todavía no existe.
 - «Login» lleva a la sección de contacto, porque falta la URL real del panel.
-- Los videos del producto y del equipo están comentados en el HTML, con identificadores de ejemplo.
+- El video del producto se muestra «en preparación» hasta que `productVideoUrl` tenga una URL. El del equipo sigue comentado en el HTML.
 - Los precios y las afirmaciones comerciales necesitan confirmación o evidencia del equipo.
 
 El detalle está en [docs/user-stories.md](docs/user-stories.md).

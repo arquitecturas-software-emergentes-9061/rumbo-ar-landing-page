@@ -120,28 +120,127 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── 7. FORMULARIO DE SOLICITUD ──────────────────── */
-  // Sin servicio externo conectado: no se envía ni se guarda ningún dato
+  /* ── 7. FORMULARIO DE SOLICITUD (PR-4) ───────────── */
+  // Envía la solicitud a rumbo-api (POST /api/v1/onboarding-requests). La URL está en config.js
+  const config = window.RUMBO_CONFIG || {};
+  const t = (key) => (window.rumboI18n ? window.rumboI18n.t(key) : key);
   const contactForm = document.querySelector('.contact-form');
 
   if (contactForm) {
     const formNotice = document.getElementById('formNotice');
+    const formReceipt = document.getElementById('formReceipt');
+    const submitButton = contactForm.querySelector('.btn-submit');
     const submitLabels = contactForm.querySelectorAll('[data-request-label]');
+    const sitesRanges = { '1': 'ONE', '2-3': 'TWO_TO_THREE', '4+': 'FOUR_OR_MORE' };
+    let sending = false;
+
+    const updateRequestLabel = () => {
+      const type = contactForm.elements.request_type.value;
+      submitLabels.forEach(label => {
+        label.hidden = label.dataset.requestLabel !== type;
+      });
+    };
+
+    // El aviso guarda su clave de i18n, así que al cambiar de idioma también se traduce
+    const showNotice = (key, state, receiptId) => {
+      formNotice.dataset.i18n = key;
+      formNotice.dataset.state = state;
+      formNotice.textContent = t(key);
+      formNotice.setAttribute('role', state === 'error' ? 'alert' : 'status');
+      formNotice.hidden = false;
+      formReceipt.hidden = !receiptId;
+      formReceipt.querySelector('code').textContent = receiptId || '';
+    };
+
+    const setSending = (value) => {
+      sending = value;
+      submitButton.disabled = value;
+      submitButton.setAttribute('aria-busy', String(value));
+      contactForm.setAttribute('aria-busy', String(value));
+    };
+
+    const requestPayload = () => {
+      const fields = contactForm.elements;
+      return {
+        type: fields.request_type.value.toUpperCase(),
+        fullName: fields.contact_name.value.trim(),
+        email: fields.contact_email.value.trim(),
+        clinicName: fields.organization_name.value.trim(),
+        role: fields.contact_role.value.trim(),
+        sitesRange: sitesRanges[fields.site_count.value] || null,
+        message: fields.message.value.trim() || null,
+        privacyConsent: fields.privacy_accepted.checked
+      };
+    };
 
     contactForm.addEventListener('change', (event) => {
-      if (event.target.name !== 'request_type') return;
-      submitLabels.forEach(label => {
-        label.hidden = label.dataset.requestLabel !== event.target.value;
-      });
-    });
-
-    // El evento submit solo se dispara si la validación nativa del formulario pasa
-    contactForm.addEventListener('submit', () => {
-      formNotice.hidden = false;
+      if (event.target.name === 'request_type') updateRequestLabel();
     });
 
     contactForm.addEventListener('input', () => {
-      formNotice.hidden = true;
+      if (!sending) {
+        formNotice.hidden = true;
+        formReceipt.hidden = true;
+      }
+    });
+
+    // El evento submit solo se dispara si la validación nativa del formulario pasa
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (sending) return;
+      const payload = requestPayload();
+      setSending(true);
+      showNotice('form_notice_sending', 'pending');
+      try {
+        const response = await fetch(config.apiBaseUrl + '/api/v1/onboarding-requests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json',
+            'Accept-Language': document.documentElement.lang === 'en' ? 'en' : 'es' },
+          body: JSON.stringify(payload),
+          signal: AbortSignal.timeout(config.requestTimeoutMs || 15000)
+        });
+        if (response.status === 201) {
+          const receipt = await response.json();
+          const type = payload.type.toLowerCase();
+          contactForm.reset();
+          document.getElementById('request-type-' + type).checked = true;
+          updateRequestLabel();
+          showNotice('form_notice_sent_' + type, 'success', receipt.id);
+        } else if (response.status === 400) {
+          // El navegador ya validó el formulario: solo pasa si la API es más estricta. Los datos se quedan
+          showNotice('form_notice_invalid', 'error');
+        } else {
+          showNotice('form_notice_failed', 'error');
+        }
+      } catch (error) {
+        // Sin red, CORS rechazado o tiempo agotado: no se guardó nada y los datos siguen en el formulario
+        showNotice('form_notice_failed', 'error');
+      } finally {
+        setSending(false);
+      }
+    });
+  }
+
+  /* ── 7b. VIDEO DEL PRODUCTO (PR-14) ──────────────── */
+  // Sin productVideoUrl en config.js la sección queda "en preparación" (así viene en el HTML)
+  const productVideo = document.getElementById('productVideo');
+  if (productVideo && config.productVideoUrl) {
+    const playButton = productVideo.querySelector('.video-play-btn');
+    const overlay = productVideo.querySelector('.video-overlay-preview');
+    const slot = productVideo.querySelector('.video-embed-slot');
+    productVideo.dataset.state = 'available';
+    productVideo.querySelector('[data-video-pending]').hidden = true;
+    playButton.hidden = false;
+    playButton.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = config.productVideoUrl;
+      frame.title = t('prod_video_badge');
+      frame.allow = 'fullscreen; picture-in-picture';
+      frame.allowFullscreen = true;
+      slot.replaceChildren(frame);
+      slot.style.display = 'block';
+      overlay.style.display = 'none';
+      productVideo.dataset.state = 'playing';
     });
   }
 

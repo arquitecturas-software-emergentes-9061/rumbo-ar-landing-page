@@ -12,9 +12,9 @@ Este documento describe lo que hace la landing, no las funciones de la aplicaci�
 | LP-04 | Conocer el producto y el equipo | Implementada |
 | LP-05 | Comparar los planes | Implementada |
 | LP-06 | Consultar preguntas frecuentes | Implementada |
-| LP-07 | Solicitar una demo | Pendiente |
+| LP-07 | Solicitar una demo | Implementada |
 | LP-08 | Acceder al panel administrativo | Pendiente |
-| LP-09 | Ver los videos | Pendiente |
+| LP-09 | Ver los videos | Parcial |
 
 ## Implementadas
 
@@ -67,8 +67,8 @@ Como visitante, quiero leer las preguntas frecuentes, para resolver mis dudas si
 
 Como responsable de una clínica, quiero enviar una solicitud de demo, para que el equipo me contacte.
 
-- **Estado actual:** un único formulario permite elegir entre solicitar una demostración e iniciar la incorporación, con los datos del representante y de la organización. No envía ni guarda datos: con datos válidos muestra un aviso que lo indica.
-- **Falta:** elegir un servicio externo de formularios, añadir la validación propia y los mensajes de resultado, y publicar la política de privacidad. No debe conectarse a `rumbo-api/`.
+- **Estado actual:** un único formulario permite elegir entre solicitar una demostración e iniciar la incorporación. Envía la solicitud a `rumbo-api` (`POST /api/v1/onboarding-requests`, PR-4), que la guarda con el consentimiento. Muestra la confirmación con el código de la solicitud, o un aviso si falla, sin perder los datos.
+- **Falta:** la URL pública de la API en `config.js` y publicar la política de privacidad.
 
 ### LP-08: Acceder al panel administrativo
 
@@ -81,7 +81,7 @@ Como cliente, quiero entrar al panel desde «Login», para gestionar mi clínica
 
 Como visitante, quiero ver los videos del producto y del equipo, para entender mejor la solución.
 
-- **Estado actual:** los reproductores están comentados en el HTML, con los identificadores de ejemplo `TU_VIDEO_ID` y `TU_VIDEO_EQUIPO`.
+- **Estado actual:** la sección del producto dice que el video está en preparación y ofrece pedir una demo en vivo. Cuando `productVideoUrl` de `config.js` tenga la URL, aparece el botón de reproducir (PR-14). El video del equipo sigue comentado con `TU_VIDEO_EQUIPO`.
 - **Falta:** los videos reales y sus enlaces.
 
 ## Contenido sin validar
