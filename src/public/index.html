@@ -316,22 +316,22 @@
           <div class="form-row">
             <div class="form-group">
               <label for="contact-name" data-i18n="form_label_name">Nombre completo</label>
-              <input id="contact-name" name="name" type="text" placeholder="Ej. Dra. Carmen Mendoza" data-i18n-placeholder="form_ph_name" />
+              <input id="contact-name" name="name" type="text" placeholder="Ej. Dra. Carmen Mendoza" data-i18n-placeholder="form_ph_name" pattern=".*\S.*" required />
             </div>
             <div class="form-group">
               <label for="contact-email" data-i18n="form_label_email">Correo institucional</label>
-              <input id="contact-email" name="email" type="email" placeholder="carmen.mendoza@clinica.com" data-i18n-placeholder="form_ph_email" />
+              <input id="contact-email" name="email" type="email" placeholder="carmen.mendoza@clinica.com" data-i18n-placeholder="form_ph_email" required />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
               <label for="contact-clinic" data-i18n="form_label_clinic">Nombre de la clínica</label>
-              <input id="contact-clinic" name="clinic" type="text" placeholder="Clínica San Lucas" data-i18n-placeholder="form_ph_clinic" />
+              <input id="contact-clinic" name="clinic" type="text" placeholder="Clínica San Lucas" data-i18n-placeholder="form_ph_clinic" pattern=".*\S.*" required />
             </div>
             <div class="form-group">
               <label for="contact-role" data-i18n="form_label_role">Cargo</label>
-              <input id="contact-role" name="role" type="text" placeholder="Director de Operaciones / TI" data-i18n-placeholder="form_ph_role" />
+              <input id="contact-role" name="role" type="text" placeholder="Director de Operaciones / TI" data-i18n-placeholder="form_ph_role" pattern=".*\S.*" required />
             </div>
           </div>
 
