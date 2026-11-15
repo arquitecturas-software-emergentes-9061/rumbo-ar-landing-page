@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rumbo-AR — Navegación indoor para clínicas</title>
+  <link rel="stylesheet" href="assets/styles/styles.css?v=3.2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <section class="hero" id="hero">
+    <div class="container hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span data-i18n="hero_badge">Navegación indoor para clínicas</span>
+        </div>
+        <h1 data-i18n="hero_title">Encuentra tu camino dentro de la clínica</h1>
+        <p class="hero-desc" data-i18n="hero_desc">Rumbo-AR ayuda a pacientes y acompañantes a encontrar consultorios, servicios y áreas dentro de la clínica mediante mapas interiores, rutas guiadas y realidad aumentada.</p>
+
+        <div class="hero-audiences">
+          <div class="audience-card">
+            <div class="audience-icon audience-icon-blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B4FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <div>
+              <span class="audience-label" data-i18n="aud_patients_label">PARA PACIENTES Y ACOMPAÑANTES</span>
+              <span class="audience-text" data-i18n="aud_patients_text">Explora la clínica con mayor autonomía</span>
+            </div>
+          </div>
+          <div class="audience-card">
+            <div class="audience-icon audience-icon-purple">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B4FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+              </svg>
+            </div>
+            <div>
+              <span class="audience-label" data-i18n="aud_clinics_label">PARA CLÍNICAS</span>
+              <span class="audience-text" data-i18n="aud_clinics_text">Mejora la orientación dentro de tus instalaciones</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHONE MOCKUP -->
+      <div class="hero-visual">
+        <div class="phone-mockup-wrap">
+          <img src="assets/images/phone-hero.png" alt="Rumbo-AR App de Navegación Indoor" class="phone-mockup-img" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="comparison section-pad" id="beneficios">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="comp_title">Orientarse dentro de una clínica no debería ser complicado</h2>
+        <p data-i18n="comp_desc">Las clínicas de gran tamaño pueden contar con múltiples pisos, consultorios, laboratorios, farmacias y áreas de atención. Para quienes visitan el establecimiento por primera vez, encontrar un destino puede generar pérdida de tiempo, recorridos innecesarios y consultas frecuentes al personal.</p>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- CONVENTIONAL -->
+        <div class="compare-card compare-bad">
+          <div class="compare-header">
+            <span class="compare-badge compare-badge-red">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span data-i18n="comp_bad_badge">Recorrido convencional</span>
+            </span>
+            <span class="compare-time compare-time-gray" data-i18n="comp_bad_time">Tiempo prom: 18 min</span>
+          </div>
+          <div class="compare-visual">
+            <svg viewBox="0 0 400 220" fill="none" class="compare-svg">
+              <path d="M60 190 L100 150 L80 120 L140 130 L160 90 L130 70 L200 80 L240 100 L280 70 L320 110 L350 90" stroke="#DC2626" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round"/>
+              <text x="90" y="108" fill="#DC2626" font-size="18" font-weight="700">?</text>
+              <text x="155" y="78" fill="#DC2626" font-size="18" font-weight="700">?</text>
+              <text x="275" y="58" fill="#DC2626" font-size="18" font-weight="700">?</text>
+              <circle cx="60" cy="190" r="6" fill="#1E293B"/>
+              <text x="42" y="210" fill="#64748B" font-size="11" font-weight="500">Entrada</text>
+              <circle cx="350" cy="90" r="6" fill="#DC2626"/>
+              <text x="305" y="115" fill="#DC2626" font-size="11" font-weight="600">Consultorio</text>
+            </svg>
+          </div>
+          <div class="compare-points">
+            <div class="point point-bad"><span class="point-x">✕</span> <span data-i18n="comp_bad_p1">Desorientación recurrente en intersecciones y pasillos gemelos.</span></div>
+            <div class="point point-bad"><span class="point-x">✕</span> <span data-i18n="comp_bad_p2">Interrupciones constantes al personal médico y administrativo.</span></div>
+            <div class="point point-bad"><span class="point-x">✕</span> <span data-i18n="comp_bad_p3">Retrasos en consultas e incremento de estrés en pacientes.</span></div>
+          </div>
+        </div>
+
+        <!-- RUMBO-AR -->
+        <div class="compare-card compare-good">
+          <div class="compare-header">
+            <span class="compare-badge compare-badge-blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3B4FE4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span data-i18n="comp_good_badge">Recorrido con Rumbo-AR</span>
+            </span>
+            <span class="compare-time compare-time-green" data-i18n="comp_good_time">Tiempo prom: 4 min (-78%)</span>
+          </div>
+          <div class="compare-visual">
+            <svg viewBox="0 0 400 220" fill="none" class="compare-svg">
+              <path d="M120 180 L120 100 L300 100" stroke="#3B4FE4" stroke-width="3" stroke-dasharray="8 5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="120" cy="180" r="7" fill="#3B4FE4" stroke="#fff" stroke-width="2"/>
+              <circle cx="120" cy="100" r="8" fill="#fff" stroke="#3B4FE4" stroke-width="3"/>
+              <circle cx="300" cy="100" r="8" fill="#10B981" stroke="#fff" stroke-width="3"/>
+              <text x="90" y="200" fill="#1E293B" font-size="11" font-weight="600">Entrada Hall</text>
+              <text x="80" y="80" fill="#1E293B" font-size="11" font-weight="600">Ascensor (PB → P2)</text>
+              <text x="285" y="80" fill="#10B981" font-size="11" font-weight="600">Consultorio 204</text>
+            </svg>
+          </div>
+          <div class="compare-points">
+            <div class="point point-good"><span class="point-check">✓</span> <span data-i18n="comp_good_p1">Ruta continua en ángulo recto con hitos visuales identificables.</span></div>
+            <div class="point point-good"><span class="point-check">✓</span> <span data-i18n="comp_good_p2">Transición clara entre pisos guiada por balizas BLE.</span></div>
+            <div class="point point-good"><span class="point-check">✓</span> <span data-i18n="comp_good_p3">Puntualidad en turnos médicos y autonomía asistencial plena.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section section-pad" id="features-pacientes">
+    <div class="container">
+      <!-- GROUP 1 -->
+      <div class="features-group">
+        <div class="features-group-header">
+          <span class="group-badge group-badge-blue" data-i18n="feat_group1_badge">Pacientes y acompañantes</span>
+          <h2 data-i18n="feat_group1_title">Muévete con mayor confianza</h2>
+        </div>
+
+        <div class="features-grid-4">
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-outline">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B4FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <h3 data-i18n="feat_card1_title">Encuentra tu destino</h3>
+            <p data-i18n="feat_card1_desc">Búsqueda rápida de consultorios, médicos, laboratorios y áreas específicas sin perder tiempo preguntando.</p>
+            <div class="fc-tag" data-i18n="feat_card1_tag">◇ Índice directo de consultorios</div>
+          </div>
+
+          <div class="feature-card-v2 fc-highlight">
+            <div class="fc-icon fc-icon-filled">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 17l4-8 4 4 6-10"/></svg>
+            </div>
+            <h3 data-i18n="feat_card2_title">Sigue una ruta clara</h3>
+            <p data-i18n="feat_card2_desc">Trazo continuo paso a paso sin dudas en cruces de pasillos o intersecciones complejas dentro del edificio.</p>
+            <div class="fc-tag" data-i18n="feat_card2_tag">♪ Giros calibrados en 90°</div>
+          </div>
+
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-outline">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B4FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </div>
+            <h3 data-i18n="feat_card3_title">Recibe indicaciones</h3>
+            <p data-i18n="feat_card3_desc">Avisos sonoros o visuales en pantalla anticipando cambios de nivel, pasajes y llegada al consultorio.</p>
+            <div class="fc-tag" data-i18n="feat_card3_tag">☑ Cambios de piso asistidos</div>
+          </div>
+
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-outline">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B4FE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+            </div>
+            <h3 data-i18n="feat_card4_title">Rutas adaptadas</h3>
+            <p data-i18n="feat_card4_desc">Modo accesible universal: trayectorias 100% libres de escalones y desniveles para sillas de ruedas y coches.</p>
+            <div class="fc-tag fc-tag-green" data-i18n="feat_card4_tag">⊙ Cumple estándar de accesibilidad</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP 2 -->
+      <div class="features-group" style="margin-top: 80px;">
+        <div class="features-group-header">
+          <span class="group-badge group-badge-green" data-i18n="feat_group2_badge">Clínicas y administradores</span>
+          <h2 data-i18n="feat_group2_title">Mejora la experiencia de orientación</h2>
+        </div>
+
+        <div class="features-grid-4">
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-filled">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <h3 data-i18n="feat_card5_title">Reduce consultas</h3>
+            <p data-i18n="feat_card5_desc">Descongestiona los mesones de admisión y permite al personal médico enfocarse plenamente en la atención.</p>
+            <div class="fc-tag fc-tag-bold" data-i18n="feat_card5_tag">-60% preguntas de ubicación en recepción</div>
+          </div>
+
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-filled">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3 data-i18n="feat_card6_title">Gestiona tus espacios</h3>
+            <p data-i18n="feat_card6_desc">Mapeo interior intuitivo: carga planos CAD, define recintos y actualiza balizas lógicas sin fricciones.</p>
+            <div class="fc-tag fc-tag-bold" data-i18n="feat_card6_tag">Editor modular de pisos y nodos</div>
+          </div>
+
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-filled">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <h3 data-i18n="feat_card7_title">Información actualizada</h3>
+            <p data-i18n="feat_card7_desc">Comunica al instante obras en pasillos, reubicación temporal de consultorios o cierres de mantenimiento.</p>
+            <div class="fc-tag fc-tag-bold" data-i18n="feat_card7_tag">Sincronización en tiempo real</div>
+          </div>
+
+          <div class="feature-card-v2">
+            <div class="fc-icon fc-icon-filled">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 data-i18n="feat_card8_title">Analiza el uso</h3>
+            <p data-i18n="feat_card8_desc">Métricas anónimas de desplazamientos, áreas con mayor demanda de orientación y tiempos de flujo.</p>
+            <div class="fc-tag fc-tag-bold" data-i18n="feat_card8_tag">Telemetría agregada 100% privada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
