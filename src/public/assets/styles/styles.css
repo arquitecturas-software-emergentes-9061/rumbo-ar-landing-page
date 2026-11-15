@@ -570,3 +570,160 @@ h3 {
   border: none;
 }
 .btn-price-filled:hover { background: var(--blue-hover); }
+
+
+/* ══════════════════════════════════════════════════
+   CONTACT FORM SECTION
+══════════════════════════════════════════════════ */
+.contact-section { background: #FAFBFE; }
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+.contact-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--blue-light);
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 20px;
+}
+.contact-info h2 {
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 18px;
+  letter-spacing: -.02em;
+}
+.contact-info p {
+  color: var(--text-muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+.contact-benefits {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.contact-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .94rem;
+  font-weight: 500;
+  color: #334155;
+}
+.benefit-check {
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.contact-direct-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+.contact-direct-icon {
+  width: 48px; height: 48px;
+  background: var(--blue-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.direct-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--blue);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.contact-direct-card strong {
+  display: block;
+  font-size: .95rem;
+  color: var(--dark);
+  margin: 1px 0;
+}
+.direct-sub {
+  display: block;
+  font-size: .78rem;
+  color: var(--text-muted);
+}
+
+.contact-form-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 38px 36px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.04);
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: .84rem;
+  font-weight: 700;
+  color: #1E293B;
+}
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-size: .92rem;
+  outline: none;
+  transition: var(--transition);
+  background: var(--white);
+  color: #0F172A;
+}
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: #94A3B8;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59,79,228,.12);
+}
+.select-wrapper { position: relative; }
+.select-wrapper select {
+  appearance: none;
+  cursor: pointer;
+}
+.select-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #64748B;
+  pointer-events: none;
+}

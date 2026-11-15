@@ -301,5 +301,48 @@
     </div>
   </section>
 
+  <section class="contact-section section-pad" id="contacto">
+    <div class="container">
+      <h2 data-i18n="contact_title">Solicita una demostración para tu clínica</h2>
+      <div class="contact-form-card">
+        <form class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name" data-i18n="form_label_name">Nombre completo</label>
+              <input id="contact-name" name="name" type="text" placeholder="Ej. Dra. Carmen Mendoza" data-i18n-placeholder="form_ph_name" />
+            </div>
+            <div class="form-group">
+              <label for="contact-email" data-i18n="form_label_email">Correo institucional</label>
+              <input id="contact-email" name="email" type="email" placeholder="carmen.mendoza@clinica.com" data-i18n-placeholder="form_ph_email" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-clinic" data-i18n="form_label_clinic">Nombre de la clínica</label>
+              <input id="contact-clinic" name="clinic" type="text" placeholder="Clínica San Lucas" data-i18n-placeholder="form_ph_clinic" />
+            </div>
+            <div class="form-group">
+              <label for="contact-role" data-i18n="form_label_role">Cargo</label>
+              <input id="contact-role" name="role" type="text" placeholder="Director de Operaciones / TI" data-i18n-placeholder="form_ph_role" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-sedes" data-i18n="form_label_sedes">Número de sedes</label>
+            <div class="select-wrapper">
+              <select id="contact-sedes" name="sedes">
+                <option value="1 sede" selected data-i18n="form_opt_1">1 sede</option>
+                <option value="2-3 sedes" data-i18n="form_opt_2">2 a 3 sedes</option>
+                <option value="4+ sedes" data-i18n="form_opt_3">Red multisede (4 o más)</option>
+              </select>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
 </body>
 </html>
