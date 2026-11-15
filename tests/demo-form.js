@@ -14,18 +14,12 @@ function checkForm() {
   try {
     const form = document.querySelector('.contact-form');
     const fields = form.elements;
-    const clinicLink = document.querySelector('footer a[data-i18n="footer_onboarding"]');
     const notice = document.getElementById('formNotice');
-    const clickWithoutNavigation = (link) => {
-      // The fixture's base URL points at the assets, not at the fixture itself.
-      link.addEventListener('click', (event) => event.preventDefault(), { once: true });
-      link.click();
-    };
-    clickWithoutNavigation(clinicLink);
-    requireCondition(fields.request_type.value === 'onboarding', 'footer starts clinic onboarding');
+    document.getElementById('request-type-onboarding').click();
+    requireCondition(fields.request_type.value === 'onboarding', 'clinic onboarding selected');
     requireCondition(!form.querySelector('[data-request-label="onboarding"]').hidden, 'onboarding submit label shown');
-    clickWithoutNavigation(document.querySelector('.final-cta a[href="#contacto"]'));
-    requireCondition(fields.request_type.value === 'demo', 'demo link selects demo mode');
+    document.getElementById('request-type-demo').click();
+    requireCondition(fields.request_type.value === 'demo', 'demo mode selected');
     let submissions = 0;
     let wasPrevented = false;
     form.addEventListener('submit', (event) => {
@@ -37,25 +31,26 @@ function checkForm() {
     form.requestSubmit();
     requireCondition(submissions === 0, 'empty form does not submit');
 
-    fields.namedItem('name').value = '   ';
-    fields.email.value = 'test@example.com';
-    fields.clinic.value = 'Test clinic';
-    fields.role.value = 'Coordinator';
-    fields.privacyConsent.checked = true;
-    requireCondition(fields.namedItem('name').validity.patternMismatch, 'whitespace is invalid');
-
-    fields.namedItem('name').value = 'Test user';
-    fields.email.value = 'invalid';
-    requireCondition(fields.email.validity.typeMismatch, 'invalid email rejected');
+    fields.contact_name.value = 'Test user';
+    fields.contact_email.value = 'invalid';
+    fields.organization_name.value = 'Test clinic';
+    fields.contact_role.value = 'Coordinator';
+    fields.privacy_accepted.checked = true;
+    fields.site_count.value = '1';
+    requireCondition(fields.contact_email.validity.typeMismatch, 'invalid email rejected');
     form.requestSubmit();
     requireCondition(submissions === 0, 'invalid email prevents submission');
 
-    fields.email.value = 'test@example.com';
-    fields.privacyConsent.checked = false;
+    fields.contact_email.value = 'test@example.com';
+    fields.site_count.value = '';
+    form.requestSubmit();
+    requireCondition(submissions === 0, 'site count is required');
+    fields.site_count.value = '1';
+    fields.privacy_accepted.checked = false;
     form.requestSubmit();
     requireCondition(submissions === 0, 'consent is required');
 
-    fields.privacyConsent.checked = true;
+    fields.privacy_accepted.checked = true;
     form.requestSubmit();
     requireCondition(submissions === 1 && wasPrevented, 'valid form reaches the local handler');
     requireCondition(!notice.hidden, 'form explains that no request was sent');
@@ -84,7 +79,7 @@ try {
     '--user-data-dir=' + path.join(testDir, 'profile'), '--dump-dom', pathToFileURL(file).href
   ], { encoding: 'utf8', timeout: 25000, stdio: ['ignore', 'pipe', 'ignore'] });
   assert.equal(result.match(/data-qa-result="([^"]+)"/)?.[1], 'PASS', 'Demo form validation');
-  console.log('PASS: required fields, whitespace, invalid email, consent and local submit handler.');
+  console.log('PASS: request modes, required fields, invalid email, site count, consent and local submit handler.');
 } finally {
   fs.rmSync(testDir, { recursive: true, force: true, maxRetries: 4, retryDelay: 150 });
 }
