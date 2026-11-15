@@ -90,7 +90,7 @@ Si `i18n.js` no carga, la página sigue en español y se oculta el botón de idi
 
 ## Publicación
 
-Publica el contenido de `src/public/`. Todavía no hay un servicio de hosting elegido ni configurado. Antes de publicar, cambia en `assets/scripts/config.js` `apiBaseUrl` por la URL pública de `rumbo-api` y, cuando exista el video, `productVideoUrl`.
+Publica el contenido de `src/public/`. Publicada, la página envía las solicitudes a `https://rumbo-api-demo.onrender.com`; servida desde `localhost`, a `http://localhost:8080`. Las dos URLs están en `assets/scripts/config.js`, que también guarda `productVideoUrl` para cuando exista el video. Está publicada en Vercel: https://rumbo-ar.vercel.app/
 
 ## Pendientes conocidos
 
