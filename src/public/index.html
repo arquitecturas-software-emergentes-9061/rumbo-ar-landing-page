@@ -535,7 +535,8 @@
             <span data-i18n="form_btn_onboarding" data-request-label="onboarding" hidden>Iniciar incorporación</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </button>
-          <p class="form-notice" id="formNotice" role="status" data-i18n="form_notice_unavailable" hidden>El envío de solicitudes aún no está disponible. Tus datos no se han enviado ni guardado.</p>
+          <p class="form-notice" id="formNotice" role="status" aria-live="polite" hidden></p>
+          <p class="form-receipt" id="formReceipt" hidden><span data-i18n="form_receipt_label">Código de solicitud:</span> <code></code></p>
         </form>
       </div>
     </div>
@@ -606,6 +607,15 @@
           alt="Vista de la ruta en realidad aumentada" data-i18n-alt="prod_demo_alt" />
         <figcaption data-i18n="prod_demo_caption">Vista ilustrativa: la ruta indica continuar recto 12 metros y muestra Cardiología a 18 metros.</figcaption>
       </figure>
+
+      <div class="product-video" id="productVideo" data-state="pending" role="region" aria-labelledby="productVideoTitle">
+        <h3 id="productVideoTitle" data-i18n="prod_video_title">Video del producto</h3>
+        <div data-video-pending>
+          <p data-i18n="prod_video_pending">Video en preparación. Mientras lo terminamos, puedes pedir una demostración en vivo.</p>
+          <a href="#contacto" class="btn-outline-dark" data-i18n="prod_video_cta">Solicitar demo en vivo</a>
+        </div>
+        <a data-video-link href="#" target="_blank" rel="noopener" class="btn-outline-dark" data-i18n="prod_video_link" hidden>Ver el video del producto</a>
+      </div>
 
       <!-- Feature Highlights Grid -->
       <div class="product-highlights-grid">
@@ -701,6 +711,7 @@
     </div>
   </footer>
 
+  <script src="assets/scripts/config.js" defer></script>
   <script src="assets/scripts/i18n.js" defer></script>
   <script src="assets/scripts/script.js" defer></script>
 </body>

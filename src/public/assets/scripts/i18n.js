@@ -11,7 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
       form_type_demo: "Solicitar una demostración",
       form_type_onboarding: "Iniciar la incorporación de mi clínica",
       form_btn_onboarding: "Iniciar incorporación",
-      form_notice_unavailable: "El envío de solicitudes aún no está disponible. Tus datos no se han enviado ni guardado.",
+      form_notice_sending: "Enviando tu solicitud…",
+      form_notice_sent_demo: "¡Listo! Recibimos tu solicitud de demostración. El equipo de Rumbo-AR te escribirá al correo que indicaste.",
+      form_notice_sent_onboarding: "¡Listo! Recibimos tu solicitud de incorporación. El equipo de Rumbo-AR te escribirá al correo que indicaste para empezar.",
+      form_notice_invalid: "Revisa los datos del formulario: alguno no tiene el formato esperado. Tus datos siguen aquí.",
+      form_notice_failed: "No pudimos enviar tu solicitud y no se guardó nada. Tus datos siguen en el formulario: vuelve a intentarlo en unos minutos.",
+      form_receipt_label: "Código de solicitud:",
+      media_unavailable: "Imagen no disponible por ahora. El resto de la página sigue funcionando.",
+      prod_video_title: "Video del producto",
+      prod_video_pending: "Video en preparación. Mientras lo terminamos, puedes pedir una demostración en vivo.",
+      prod_video_cta: "Solicitar demo en vivo",
+      prod_video_link: "Ver el video del producto",
       final_title: "Haz que llegar al destino sea más simple",
       final_desc: "Mejora la orientación de pacientes y visitantes dentro de tu clínica con Rumbo-AR.",
       final_btn1: "Solicitar demo →",
@@ -199,7 +209,17 @@ document.addEventListener('DOMContentLoaded', () => {
       form_type_demo: "Request a demo",
       form_type_onboarding: "Start onboarding my clinic",
       form_btn_onboarding: "Start onboarding",
-      form_notice_unavailable: "Request submission is not available yet. Your data has not been sent or saved.",
+      form_notice_sending: "Sending your request…",
+      form_notice_sent_demo: "Done! We received your demo request. The Rumbo-AR team will write to the email you entered.",
+      form_notice_sent_onboarding: "Done! We received your onboarding request. The Rumbo-AR team will write to the email you entered to get started.",
+      form_notice_invalid: "Please check the form: some data does not have the expected format. Your data is still here.",
+      form_notice_failed: "We could not send your request and nothing was saved. Your data is still in the form: please try again in a few minutes.",
+      form_receipt_label: "Request code:",
+      media_unavailable: "Image not available right now. The rest of the page keeps working.",
+      prod_video_title: "Product video",
+      prod_video_pending: "Video in preparation. While we finish it, you can request a live demo.",
+      prod_video_cta: "Request a live demo",
+      prod_video_link: "Watch the product video",
       final_title: "Make reaching every clinic destination effortless",
       final_desc: "Improve patient and visitor orientation inside your clinic with Rumbo-AR.",
       final_btn1: "Request a demo →",
@@ -418,6 +438,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update HTML lang attribute
     document.documentElement.lang = lang;
   }
+
+  // Lets script.js translate the messages it writes at run time (form notices, unavailable images).
+  window.rumboI18n = {
+    t: (key) => translations[currentLang]?.[key] ?? translations.es[key] ?? key
+  };
 
   if (langSwitch) {
     langSwitch.addEventListener('click', () => {
